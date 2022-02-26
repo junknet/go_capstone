@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+BIN_FILE="dias"
+export PATH=$PATH:/home/junknet/Downloads/gcc-arm-10.3-2021.07-x86_64-arm-none-linux-gnueabihf/bin/
+export CC=arm-none-linux-gnueabihf-gcc
+export CXX=arm-none-linux-gnueabihf-g++
+go build -ldflags="-extldflags=-static" -o ${BIN_FILE}
+adb push ${BIN_FILE} /data/local/tmp
+adb shell /data/local/tmp/${BIN_FILE}
